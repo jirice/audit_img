@@ -306,7 +306,7 @@ view: report_staging_v2 {
       quarter,
       year
     ]
-    convert_tz: yes
+    convert_tz: no
     sql: ${TABLE}.transaction_date ;;
   }
 
