@@ -30,7 +30,7 @@
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: false
+    show_x_axis_label: true
     show_x_axis_ticks: true
     x_axis_scale: auto
     y_axis_scale_mode: linear
@@ -84,7 +84,7 @@
       - id: data.supplier_parent_count
         name: Supplier Parent Count
     row: 8
-    col: 17
+    col: 14
     width: 10
     height: 7
   - name: Spend by Category
@@ -127,7 +127,7 @@
     label_value_format: "$#,##0,, \\M"
     row: 2
     col: 0
-    width: 12
+    width: 9
     height: 6
   - name: Spend by Supplier - Top 10
     label: Spend by Supplier - Top 10
@@ -185,7 +185,7 @@
       - id: data.selected_spend_metric
         name: Selected Spend Metric
     row: 2
-    col: 12
+    col: 9
     width: 15
     height: 6
   # - name: PO COUNT - Single Value
@@ -275,11 +275,11 @@
     series_types: {}
     single_value_title: Invoice Count
     row: 0
-    col: 16
-    width: 4
+    col: 15
+    width: 5
     height: 2
-  - name: Line Count - Single Value
-    label: Line Count - Single Value
+  - name: Count - Single Value
+    label: Count - Single Value
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -318,7 +318,7 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-    single_value_title: Line Count
+    single_value_title: Count
     row: 0
     col: 20
     width: 4
@@ -366,8 +366,8 @@
     single_value_title: Spend
     value_format: "$#,##0"
     row: 0
-    col: 4
-    width: 4
+    col: 5
+    width: 5
     height: 2
   - name: Supplier Parent Count
     label: Supplier Parent Count
@@ -411,8 +411,8 @@
     series_types: {}
     single_value_title: Supplier Parents
     row: 0
-    col: 8
-    width: 4
+    col: 10
+    width: 5
     height: 2
   - name: Total Spend Single Value
     label: Total Spend Single Value
@@ -457,10 +457,10 @@
     single_value_title: Unfiltered Spend
     row: 0
     col: 0
-    width: 4
+    width: 5
     height: 2
-  - name: business_unit
-    label: business_unit
+  - name: Business Unit Chart
+    label: Business Unit Chart
     model: imgworldwide_audit
     explore: data
     type: looker_pie
@@ -501,10 +501,10 @@
     series_types: {}
     row: 8
     col: 7
-    width: 10
+    width: 7
     height: 7
-  - name: business_unit_segment
-    label: business_unit_segment
+  - name: Business Unit Segment Chart
+    label: Business Unit Segment Chart
     model: imgworldwide_audit
     explore: data
     type: looker_pie
@@ -547,8 +547,8 @@
     col: 0
     width: 7
     height: 7
-  - name: Department Table
-    label: Department Table
+  - name: Business Unit Segment Table
+    label: Business Unit Segment Table
     model: imgworldwide_audit
     explore: data
     type: table
@@ -598,10 +598,10 @@
     series_types: {}
     row: 15
     col: 0
-    width: 10
+    width: 11
     height: 8
-  - name: file_name
-    label: file_name
+  - name: File Name Table
+    label: File Name Table
     model: imgworldwide_audit
     explore: data
     type: table
@@ -650,7 +650,7 @@
     totals_color: "#808080"
     series_types: {}
     row: 15
-    col: 10
+    col: 11
     width: 13
     height: 8
   filters:

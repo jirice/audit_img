@@ -39,7 +39,7 @@
     series_labels:
       data.category: Category
       data.supplier_parent_count: "# Suppliers"
-      data.count: "# Lines"
+      data.count: "# Count"
 #       data.po_count: "# POs"
       data.invoice_count: "# Invoices"
       percent_total_spend: "% Spend"
@@ -47,7 +47,7 @@
     row: 6
     col: 0
     width: 24
-    height: 6
+    height: 4
   - name: Total Spend by Supplier Grouping
     label: Total Spend by Supplier Grouping
     model: imgworldwide_audit
@@ -86,7 +86,7 @@
       data.supplier: Supplier
       data.total_spend: Spend
       data.supplier_parent_count: "# Suppliers"
-      data.count: "# Lines"
+      data.count: "# Count"
       data.po_count: "# POs"
       data.invoice_count: "# Invoices"
       percent_total_spend: "% Spend"
@@ -151,7 +151,7 @@
     series_labels:
       data.description: Description
       data.supplier_parent_count: "# Suppliers"
-      data.count: "# Lines"
+      data.count: "# Count"
 #       data.po_count: "# POs"
       data.invoice_count: "# Invoices"
       data.total_spend: Spend

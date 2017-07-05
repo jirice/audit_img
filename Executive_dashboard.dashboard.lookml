@@ -276,8 +276,8 @@
     col: 0
     width: 11
     height: 7
-  - name: "%Compliance"
-    title: "%Compliance"
+  - name: "%Excluded"
+    title: "%Excluded"
     model: imgworldwide_audit
     explore: data
     type: looker_column
@@ -287,8 +287,8 @@
     limit: 100
     column_limit: 10
     dynamic_fields:
-    - table_calculation: percent_compliant
-      label: Percent Compliant
+    - table_calculation: percent_excluded
+      label: Percent Excluded
       expression: |-
         coalesce(pivot_index(${data.selected_spend_metric},1),0)
         /
@@ -324,13 +324,13 @@
     show_null_points: true
     point_style: circle
     interpolation: linear
-    label: "%Compliance"
+    label: "%Excluded"
     query_timezone: America/New_York
     series_types:
       percent_compliant: line
     column_group_spacing_ratio:
     column_spacing_ratio:
-    y_axis_labels: [Compliant Spend, Non Compliant Spend, "%Compliant"]
+    y_axis_labels: [Excluded Spend, Non Excluded Spend, "%Excluded"]
     y_axis_orientation: [left, left, right]
     series_labels:
       data.compliant_measure: Compliant Spend
@@ -345,8 +345,8 @@
           __LINE_NUM: 366}], __FILE: imgworldwide_audit/Executive_dashboard.dashboard.lookml,
       __LINE_NUM: 352}, {label: !!null '', maxValue: 1, minValue: !!null '', orientation: right,
       showLabels: true, showValues: true, tickDensity: default, tickDensityCustom: 85,
-      type: linear, unpinAxis: false, valueFormat: !!null '', series: [{id: percent_compliant,
-          name: Percent Compliant}]}]
+      type: linear, unpinAxis: false, valueFormat: !!null '', series: [{id: percent_excluded,
+          name: Percent Excluded}]}]
     y_axis_reversed: false
     limit_displayed_rows_values:
       show_hide: hide
