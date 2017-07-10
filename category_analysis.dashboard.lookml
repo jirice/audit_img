@@ -1,31 +1,33 @@
 - dashboard: Category Analysis
   layout: newspaper
   elements:
-  - name: Total Spend by Category
-    label: Total Spend by Category
+  - name: Classification
+    label: Classification
     model: imgworldwide_audit
     explore: data
     type: table
     fields:
-    - data.category
+    - data.unspsc_level_1
+    - data.total_spend
     - data.supplier_parent_count
     - data.count
-    # - data.po_count
     - data.invoice_count
-    - data.total_spend
+    - data.source
+    pivots:
+    - data.source
     sorts:
-    - data.total_spend desc
+    - data.unspsc_level_1
+    - data.source
     limit: 500
     column_limit: 50
     total: true
     dynamic_fields:
     - table_calculation: percent_total_spend
       label: Percent Total Spend
-      expression: "${data.total_spend}/${data.total_spend:total}"
+      expression: "${data.total_spend}/${data.total_spend:total}\n"
       value_format:
       value_format_name: percent_2
-    query_timezone: America/New_York
-    show_view_names: false
+    show_view_names: true
     show_row_numbers: true
     truncate_column_names: false
     hide_totals: false
@@ -36,97 +38,7 @@
     conditional_formatting_ignored_fields: []
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    series_labels:
-      data.category: Category
-      data.supplier_parent_count: "# Suppliers"
-      data.count: "# Count"
-#       data.po_count: "# POs"
-      data.invoice_count: "# Invoices"
-      percent_total_spend: "% Spend"
-      data.total_spend: Spend
-    row: 6
-    col: 0
-    width: 24
-    height: 4
-  - name: Total Spend by Supplier Grouping
-    label: Total Spend by Supplier Grouping
-    model: imgworldwide_audit
-    explore: data
-    type: table
-    fields:
-    - data.supplier_name
-    - data.count
-    # - data.po_count
-    - data.invoice_count
-    - data.total_spend
-    sorts:
-    - data.total_spend desc
-    limit: 500
-    column_limit: 50
-    total: true
-    dynamic_fields:
-    - table_calculation: percent_total_spend
-      label: Percent Total Spend
-      expression: "${data.total_spend}/${data.total_spend:total}"
-      value_format:
-      value_format_name: percent_2
-    query_timezone: America/New_York
-    show_view_names: false
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    series_labels:
-      data.supplier: Supplier
-      data.total_spend: Spend
-      data.supplier_parent_count: "# Suppliers"
-      data.count: "# Count"
-      data.po_count: "# POs"
-      data.invoice_count: "# Invoices"
-      percent_total_spend: "% Spend"
-    row:
-    col:
-    width:
-    height:
-  - name: Total Spend by Description
-    label: Total Spend by Description
-    model: imgworldwide_audit
-    explore: data
-    type: table
-    fields:
-    - data.gl_account_text
-    - data.count
-    # - data.po_count
-    - data.invoice_count
-    - data.total_spend
-    sorts:
-    - data.total_spend desc
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - table_calculation: percent_total_spend
-      label: Percent Total Spend
-      expression: "${data.total_spend}/sum(${data.total_spend})"
-      value_format:
-      value_format_name: percent_2
-    query_timezone: America/New_York
-    show_view_names: false
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
+    series_types: {}
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -147,152 +59,63 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    series_types: {}
     series_labels:
-      data.description: Description
-      data.supplier_parent_count: "# Suppliers"
-      data.count: "# Count"
-#       data.po_count: "# POs"
-      data.invoice_count: "# Invoices"
+      data.supplier: Supplier
       data.total_spend: Spend
-      percent_total_spend: "% Spend"
+      data.supplier_parent_count: "# Suppliers"
+      data.count: "# Lines"
+      data.invoice_count: "# Invoices"
+      percent_total_spend: "% Total"
+    listen: {}
+    row: 6
+    col: 0
+    width: 24
+    height: 7
+  - name: Supplier Grouping
+    label: Supplier Grouping
+    model: imgworldwide_audit
+    explore: data
+    type: table
+    fields:
+    - spend_by_supplier.supplier_parent
+    - data.source
+    - data.total_spend
+    - data.count
+    - data.invoice_count
+    pivots:
+    - data.source
+    sorts:
+    - data.total_spend desc 0
+    - data.source
+    limit: 500
+    column_limit: 50
+    total: true
+    dynamic_fields:
+    - table_calculation: Percent_total_spend
+      label: Percent Total Spend
+      expression: "${data.total_spend}/${data.total_spend:total}"
+      value_format:
+      value_format_name: percent_2
+    show_view_names: true
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    conditional_formatting_ignored_fields: []
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_labels:
+      data.supplier: Supplier
+      data.total_spend: Spend
+      data.supplier_parent_count: "# Suppliers"
+      data.count: "# Lines"
+      data.invoice_count: "# Invoices"
+      Percent_total_spend: "% Total"
+    listen: {}
     row:
     col:
     width:
     height:
-  filters:
-  - name: Cat Lvl 1
-    title: Cat Lvl 1
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.sourcing_group_level_1
-    listens_to_filters: []
-  - name: Cat Lvl 2
-    title: Cat Lvl 2
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.sourcing_group_level_2
-    listens_to_filters:
-    - Cat Lvl 1
-  - name: Cat Lvl 3
-    title: Cat Lvl 3
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.sourcing_group_level_3
-    listens_to_filters:
-    - Cat Lvl 1
-    - Cat Lvl 2
-  - name: Cat Lvl 4
-    title: Cat Lvl 4
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.sourcing_group_level_4
-    listens_to_filters:
-    - Cat Lvl 1
-    - Cat Lvl 2
-    - Cat Lvl 3
-  # - name: Cat Lvl 5
-  #   title: Cat Lvl 5
-  #   type: field_filter
-  #   default_value: ''
-  #   model: imgworldwide_audit
-  #   explore: data
-  #   field: data.sourcing_group_level_5
-  #   listens_to_filters:
-  #   - Cat Lvl 1
-  #   - Cat Lvl 2
-  #   - Cat Lvl 3
-  #   - Cat Lvl 4
-  # - name: Cat Lvl 6
-  #   title: Cat Lvl 6
-  #   type: field_filter
-  #   default_value: ''
-  #   model: imgworldwide_audit
-  #   explore: data
-  #   field: data.sourcing_group_level_6
-  #   listens_to_filters:
-  #   - Cat Lvl 1
-  #   - Cat Lvl 2
-  #   - Cat Lvl 3
-  #   - Cat Lvl 4
-  #   - Cat Lvl 5
-  # - name: Spend Type
-  #   title: Spend Type
-  #   type: field_filter
-  #   default_value: ''
-  #   model: imgworldwide_audit
-  #   explore: data
-  #   field: data.spend_type
-  #   listens_to_filters: []
-  - name: Cost Center
-    title: Cost Center
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.cost_center
-    listens_to_filters: []
-  - name: Transaction Date
-    title: Transaction Date
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.transaction_date_date
-    listens_to_filters: []
-  - name: Transaction Calendar Year
-    title: Transaction Calendar Year
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.transaction_date_year
-    listens_to_filters: []
-  - name: Transaction Calendar Quarter
-    title: Transaction Calendar Quarter
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.transaction_date_quarter_of_year
-    listens_to_filters: []
-  - name: Transaction Calendar Month
-    title: Transaction Calendar Month
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.transaction_date_month_num
-    listens_to_filters: []
-  - name: Transaction Fiscal Year
-    title: Transaction Fiscal Year
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.transaction_date_fiscal_year
-    listens_to_filters: []
-  - name: Transaction Fiscal Quarter
-    title: Transaction Fiscal Quarter
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.transaction_date_fiscal_quarter_of_year
-    listens_to_filters: []
-  - name: Transaction Fiscal Month
-    title: Transaction Fiscal Month
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.transaction_date_fiscal_month_num
-    listens_to_filters: []

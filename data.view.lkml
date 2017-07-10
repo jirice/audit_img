@@ -6,6 +6,8 @@ view: data {
     sql: ${TABLE}.account_document_number ;;
   }
 
+
+
   dimension: amount {
     type: string
     sql: ${TABLE}.amount ;;
@@ -14,6 +16,11 @@ view: data {
   dimension: ba_description {
     type: string
     sql: ${TABLE}.ba_description ;;
+  }
+
+  measure: ba_description_count {
+    type: count_distinct
+    sql: ${ba_description} ;;
   }
 
   dimension: business_area {
@@ -59,6 +66,14 @@ view: data {
   dimension: cost_center {
     type: string
     sql: ${TABLE}.cost_center ;;
+  }
+
+  measure:cost_center_count {
+
+#     sql: (select count(distinct b.cost_center)  FROM sr_img.report_staging_v2 b) ;;
+
+    type: count_distinct
+    sql: ${cost_center} ;;
   }
 
   dimension: cost_center_text {
@@ -334,18 +349,21 @@ view: data {
     sql: ${TABLE}.unspsc_full_code ;;
   }
 
-  dimension: sourcing1 {
+  dimension: unspsc_level_1 {
     type: string
+    drill_fields: [unspsc_level_2]
     sql: ${TABLE}.unspsc_level_1 ;;
   }
 
   dimension: unspsc_level_2 {
     type: string
+    drill_fields: [unspsc_level_2]
     sql: ${TABLE}.unspsc_level_2 ;;
   }
 
   dimension: unspsc_level_3 {
     type: string
+    drill_fields: [unspsc_level_2]
     sql: ${TABLE}.unspsc_level_3 ;;
   }
 

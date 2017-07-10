@@ -1,31 +1,27 @@
 - dashboard: Summary
   layout: newspaper
   elements:
-  - name: Spend by Month
-    label: Spend by Month
+  - name: Profit Center
+    label: Profit Center
     model: imgworldwide_audit
     explore: data
-    type: looker_column
+    type: looker_bar
     fields:
-    - data.transaction_date_month
-    - data.supplier_parent_count
-    - data.selected_spend_metric
-    fill_fields:
-  #  - data.transaction_date_month
+    - data.profit_center_description
+    - data.total_spend
     sorts:
-    - data.transaction_date_month
-    limit: 500
+    - data.total_spend desc
+    limit: 10
     column_limit: 50
-    query_timezone: America/New_York
     stacking: ''
-    show_value_labels: false
+    show_value_labels: true
     label_density: 25
     legend_position: center
     x_axis_gridlines: false
     y_axis_gridlines: true
-    show_view_names: false
+    show_view_names: true
     limit_displayed_rows: false
-    y_axis_combined: false
+    y_axis_combined: true
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
@@ -39,26 +35,22 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    series_types:
-#       data.po_count: line
-      data.supplier_parent_count: line
-    x_axis_datetime_label: "%b-%y"
-    x_axis_label_rotation: -45
-    y_axis_labels:
-    - Supplier Parent Count
-    - Spend
-    y_axis_orientation:
-    - right
-    - left
-    series_labels:
-      data.supplier_parent_count: Supplier Parent Count
-#       data.po_spend: PO Spend
-      data.selected_spend_metric: Spend
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    series_types: {}
+    colors:
+    - 'palette: Mixed Dark'
+    series_colors: {}
     y_axes:
-    - label: Spend
+    - label: ''
       maxValue:
       minValue:
-      orientation: left
+      orientation: bottom
       showLabels: true
       showValues: true
       tickDensity: default
@@ -67,33 +59,393 @@
       unpinAxis: false
       valueFormat: "$#,##0,, \\M"
       series:
-      - id: data.selected_spend_metric
-        name: Spend
-    - label: Supplier Parent Count
+      - id: data.total_spend
+        name: Data Total Spend
+        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __LINE_NUM: 47
+      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __LINE_NUM: 45
+    listen: {}
+    row: 26
+    col: 0
+    width: 9
+    height: 8
+  - name: Region
+    label: Region
+    model: imgworldwide_audit
+    explore: data
+    type: looker_pie
+    fields:
+    - data.total_spend
+    - data.geographic_description
+    sorts:
+    - data.total_spend desc
+    limit: 10
+    column_limit: 50
+    value_labels: legend
+    label_type: labVal
+    stacking: ''
+    show_value_labels: true
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    series_types: {}
+    colors: 'palette: Looker Classic'
+    series_colors: {}
+    y_axes:
+    - label: ''
       maxValue:
       minValue:
-      orientation: right
+      orientation: bottom
       showLabels: true
       showValues: true
       tickDensity: default
       tickDensityCustom: 5
       type: linear
       unpinAxis: false
-      valueFormat:
+      valueFormat: "$#,##0,, \\M"
       series:
-      - id: data.supplier_parent_count
-        name: Supplier Parent Count
-    row: 8
-    col: 14
-    width: 10
-    height: 7
-  - name: Spend by Category
-    label: Spend by Category
+      - id: data.total_spend
+        name: Data Total Spend
+        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __LINE_NUM: 94
+      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __LINE_NUM: 92
+    listen: {}
+    row: 20
+    col: 0
+    width: 9
+    height: 6
+  - name: Company
+    label: Company
     model: imgworldwide_audit
     explore: data
     type: looker_bar
     fields:
-    - data.category
+    - data.company_description
+    - data.total_spend
+    sorts:
+    - data.total_spend desc
+    limit: 500
+    column_limit: 50
+    stacking: ''
+    show_value_labels: true
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    series_types: {}
+    y_axes:
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: bottom
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat: "$#,##0,, \\M"
+      series:
+      - id: data.total_spend
+        name: Data Total Spend
+        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __LINE_NUM: 130
+      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __LINE_NUM: 128
+    listen: {}
+    row: 20
+    col: 9
+    width: 15
+    height: 14
+  - name: Business Area
+    label: Business Area
+    model: imgworldwide_audit
+    explore: data
+    type: looker_bar
+    fields:
+    - data.ba_description
+    - data.total_spend
+    sorts:
+    - data.total_spend desc
+    limit: 500
+    column_limit: 50
+    stacking: ''
+    show_value_labels: true
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes:
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: bottom
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat: "$#,##0,, \\M"
+      series:
+      - id: data.total_spend
+        name: Data Total Spend
+        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __LINE_NUM: 165
+      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __LINE_NUM: 163
+    font_size: 10px, 1em, 50%, etc.
+    listen: {}
+    row: 13
+    col: 0
+    width: 9
+    height: 7
+  - name: Cost Centers
+    label: Cost Centers
+    model: imgworldwide_audit
+    explore: data
+    type: single_value
+    fields:
+    - data.cost_center_count
+    filters:
+      data.cost_center: "-EMPTY"
+    limit: 5000
+    column_limit: 50
+    total: true
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    show_view_names: true
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    conditional_formatting_ignored_fields: []
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_types: {}
+    single_value_title: Cost Centers
+    listen: {}
+    row: 0
+    col: 12
+    width: 6
+    height: 2
+  - name: UNSPSC Drill
+    label: Business Unit Segment Chart
+    model: imgworldwide_audit
+    explore: data
+    type: looker_bar
+    fields:
+    - data.total_spend
+    - data.unspsc_level_1
+    sorts:
+    - data.total_spend desc
+    limit: 50
+    column_limit: 50
+    stacking: ''
+    show_value_labels: true
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    query_timezone: America/New_York
+    value_labels: legend
+    label_type: labPer
+    series_types: {}
+    y_axes:
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: bottom
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat: "$#,##0,, \\M"
+      series:
+      - id: data.total_spend
+        name: Data Total Spend
+        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __LINE_NUM: 241
+      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __LINE_NUM: 239
+    listen: {}
+    row: 2
+    col: 9
+    width: 15
+    height: 11
+  - name: GL Drill
+    label: GL Drill
+    model: imgworldwide_audit
+    explore: data
+    type: looker_bar
+    fields:
+    - data.gl_category_level_1
+    - data.total_spend
+    sorts:
+    - data.total_spend desc
+    limit: 500
+    column_limit: 50
+    stacking: ''
+    show_value_labels: true
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    series_types: {}
+    y_axes:
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: bottom
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat: "$#,##0,, \\B"
+      series:
+      - id: data.total_spend
+        name: Data Total Spend
+        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __LINE_NUM: 277
+      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __LINE_NUM: 275
+    listen: {}
+    row: 7
+    col: 0
+    width: 9
+    height: 6
+  - name: Business Areas
+    label: Business Areas
+    model: imgworldwide_audit
+    explore: data
+    type: single_value
+    fields:
+    - data.ba_description_count
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    series_types: {}
+    single_value_title: Business Areas
+    listen: {}
+    row: 0
+    col: 18
+    width: 6
+    height: 2
+  - name: Sourcing drill
+    label: Sourcing Drill
+    model: imgworldwide_audit
+    explore: data
+    type: looker_bar
+    fields:
+    - data.sourcing_group_level_1
     - data.selected_spend_metric
     sorts:
     - data.selected_spend_metric desc
@@ -125,12 +477,13 @@
     series_types: {}
     y_axis_value_format: "$#,##0,, \\M"
     label_value_format: "$#,##0,, \\M"
+    listen: {}
     row: 2
     col: 0
     width: 9
-    height: 6
-  - name: Spend by Supplier - Top 10
-    label: Spend by Supplier - Top 10
+    height: 5
+  - name: Top suppliers(spend top down)
+    label: Top suppliers(Spend Top Down)
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -184,147 +537,17 @@
       series:
       - id: data.selected_spend_metric
         name: Selected Spend Metric
-    row: 2
+        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __LINE_NUM: 395
+      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __LINE_NUM: 383
+    listen: {}
+    row: 13
     col: 9
     width: 15
-    height: 6
-  # - name: PO COUNT - Single Value
-  #   label: PO COUNT - Single Value
-  #   model: imgworldwide_audit
-  #   explore: data
-  #   type: single_value
-  #   fields:
-  #   - data.po_count
-  #   limit: 500
-  #   column_limit: 50
-  #   query_timezone: America/New_York
-  #   custom_color_enabled: false
-  #   custom_color: forestgreen
-  #   show_single_value_title: true
-  #   show_comparison: false
-  #   comparison_type: value
-  #   comparison_reverse_colors: false
-  #   show_comparison_label: true
-  #   stacking: ''
-  #   show_value_labels: false
-  #   label_density: 25
-  #   legend_position: center
-  #   x_axis_gridlines: false
-  #   y_axis_gridlines: true
-  #   show_view_names: true
-  #   limit_displayed_rows: false
-  #   y_axis_combined: true
-  #   show_y_axis_labels: true
-  #   show_y_axis_ticks: true
-  #   y_axis_tick_density: default
-  #   y_axis_tick_density_custom: 5
-  #   show_x_axis_label: true
-  #   show_x_axis_ticks: true
-  #   x_axis_scale: auto
-  #   y_axis_scale_mode: linear
-  #   ordering: none
-  #   show_null_labels: false
-  #   show_totals_labels: false
-  #   show_silhouette: false
-  #   totals_color: "#808080"
-  #   series_types: {}
-  #   single_value_title: PO Count
-  #   row: 0
-  #   col: 12
-  #   width: 4
-  #   height: 2
-  - name: Invoice Count - Single Value
-    label: Invoice Count - Single Value
-    model: imgworldwide_audit
-    explore: data
-    type: single_value
-    fields:
-    - data.invoice_count
-    limit: 500
-    column_limit: 50
-    query_timezone: America/New_York
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Invoice Count
-    row: 0
-    col: 15
-    width: 5
-    height: 2
-  - name: Count - Single Value
-    label: Count - Single Value
-    model: imgworldwide_audit
-    explore: data
-    type: single_value
-    fields:
-    - data.count
-    limit: 500
-    column_limit: 50
-    query_timezone: America/New_York
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Count
-    row: 0
-    col: 20
-    width: 4
-    height: 2
-  - name: Dynamic Spend Metric
-    label: Dynamic Spend Metric
+    height: 7
+  - name: Total spend Copy 2
+    label: Total Spend
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -363,13 +586,14 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-    single_value_title: Spend
+    single_value_title: Total Spend
     value_format: "$#,##0"
+    listen: {}
     row: 0
-    col: 5
-    width: 5
+    col: 0
+    width: 6
     height: 2
-  - name: Supplier Parent Count
+  - name: Supplier parent count Copy
     label: Supplier Parent Count
     model: imgworldwide_audit
     explore: data
@@ -409,250 +633,12 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-    single_value_title: Supplier Parents
+    single_value_title: Suppliers
+    listen: {}
     row: 0
-    col: 10
-    width: 5
+    col: 6
+    width: 6
     height: 2
-  - name: Total Spend Single Value
-    label: Total Spend Single Value
-    model: imgworldwide_audit
-    explore: data
-    type: single_value
-    fields:
-    - data.total_spend
-    limit: 500
-    column_limit: 50
-    query_timezone: America/New_York
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Unfiltered Spend
-    row: 0
-    col: 0
-    width: 5
-    height: 2
-  - name: Business Unit Chart
-    label: Business Unit Chart
-    model: imgworldwide_audit
-    explore: data
-    type: looker_pie
-    fields:
-    - data.business_unit
-    - data.selected_spend_metric
-    filters:
-      data.business_unit: "-EMPTY"
-    sorts:
-    - data.selected_spend_metric desc
-    limit: 50
-    column_limit: 50
-    query_timezone: America/New_York
-    value_labels: legend
-    label_type: labPer
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    row: 8
-    col: 7
-    width: 7
-    height: 7
-  - name: Business Unit Segment Chart
-    label: Business Unit Segment Chart
-    model: imgworldwide_audit
-    explore: data
-    type: looker_pie
-    fields:
-    - data.business_unit_segment
-    - data.selected_spend_metric
-    filters:
-      data.business_unit_segment: "-EMPTY"
-    sorts:
-    - data.selected_spend_metric desc
-    limit: 50
-    column_limit: 50
-    query_timezone: America/New_York
-    value_labels: legend
-    label_type: labPer
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    row: 8
-    col: 0
-    width: 7
-    height: 7
-  - name: Business Unit Segment Table
-    label: Business Unit Segment Table
-    model: imgworldwide_audit
-    explore: data
-    type: table
-    fields:
-    - data.business_unit_segment
-    - data.selected_spend_metric
-    filters:
-      data.business_unit_segment: "-EMPTY"
-    sorts:
-    - data.selected_spend_metric desc
-    limit: 50
-    column_limit: 50
-    query_timezone: America/New_York
-    show_view_names: false
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    value_labels: legend
-    label_type: labPer
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    row: 15
-    col: 0
-    width: 11
-    height: 8
-  - name: File Name Table
-    label: File Name Table
-    model: imgworldwide_audit
-    explore: data
-    type: table
-    fields:
-    - data.file_name
-    - data.selected_spend_metric
-    filters:
-      data.file_name: "-EMPTY"
-    sorts:
-    - data.selected_spend_metric desc
-    limit: 50
-    column_limit: 50
-    query_timezone: America/New_York
-    show_view_names: false
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    value_labels: legend
-    label_type: labPer
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    row: 15
-    col: 11
-    width: 13
-    height: 8
   filters:
   - name: Cat Lvl 2
     title: Cat Lvl 2
@@ -663,6 +649,7 @@
     field: data.sourcing_group_level_2
     listens_to_filters:
     - Cat Lvl 1
+    allow_multiple_values: true
   - name: Cat Lvl 1
     title: Cat Lvl 1
     type: field_filter
@@ -671,6 +658,7 @@
     explore: data
     field: data.sourcing_group_level_1
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Cat Lvl 3
     title: Cat Lvl 3
     type: field_filter
@@ -681,18 +669,7 @@
     listens_to_filters:
     - Cat Lvl 2
     - Cat Lvl 1
-  # - name: Cat Lvl 5
-  #   title: Cat Lvl 5
-  #   type: field_filter
-  #   default_value:
-  #   model: imgworldwide_audit
-  #   explore: data
-  #   field: data.sourcing_group_level_5
-  #   listens_to_filters:
-  #   - Cat Lvl 2
-  #   - Cat Lvl 1
-  #   - Cat Lvl 3
-  #   - Cat Lvl 4
+    allow_multiple_values: true
   - name: Cat Lvl 4
     title: Cat Lvl 4
     type: field_filter
@@ -704,27 +681,7 @@
     - Cat Lvl 2
     - Cat Lvl 1
     - Cat Lvl 3
-  # - name: Cat Lvl 6
-  #   title: Cat Lvl 6
-  #   type: field_filter
-  #   default_value:
-  #   model: imgworldwide_audit
-  #   explore: data
-  #   field: data.sourcing_group_level_6
-  #   listens_to_filters:
-  #   - Cat Lvl 2
-  #   - Cat Lvl 1
-  #   - Cat Lvl 3
-  #   - Cat Lvl 5
-  #   - Cat Lvl 4
-  - name: cost_center
-    title: cost_center
-    type: field_filter
-    default_value: ''
-    model: imgworldwide_audit
-    explore: data
-    field: data.cost_center
-    listens_to_filters: []
+    allow_multiple_values: true
   - name: Transaction Date
     title: Transaction Date
     type: field_filter
@@ -733,6 +690,7 @@
     explore: data
     field: data.transaction_date_date
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Transaction Calendar Year
     title: Transaction Calendar Year
     type: field_filter
@@ -741,6 +699,7 @@
     explore: data
     field: data.transaction_date_year
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Transaction Calendar Quarter
     title: Transaction Calendar Quarter
     type: field_filter
@@ -749,6 +708,7 @@
     explore: data
     field: data.transaction_date_quarter_of_year
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Transaction Calendar Month
     title: Transaction Calendar Month
     type: field_filter
@@ -757,6 +717,7 @@
     explore: data
     field: data.transaction_date_month_num
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Transaction Fiscal Quarter
     title: Transaction Fiscal Quarter
     type: field_filter
@@ -765,6 +726,7 @@
     explore: data
     field: data.transaction_date_fiscal_quarter_of_year
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Transaction Fiscal Year
     title: Transaction Fiscal Year
     type: field_filter
@@ -773,6 +735,7 @@
     explore: data
     field: data.transaction_date_fiscal_year
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Transaction Fiscal Month
     title: Transaction Fiscal Month
     type: field_filter
@@ -781,6 +744,7 @@
     explore: data
     field: data.transaction_date_fiscal_month_num
     listens_to_filters: []
+    allow_multiple_values: true
   - name: Spend Type
     title: Spend Type
     type: field_filter
@@ -789,3 +753,4 @@
     explore: data
     field: data.select_spend_metric
     listens_to_filters: []
+    allow_multiple_values: true
