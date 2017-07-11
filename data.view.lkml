@@ -6,8 +6,6 @@ view: data {
     sql: ${TABLE}.account_document_number ;;
   }
 
-
-
   dimension: amount {
     type: string
     sql: ${TABLE}.amount ;;

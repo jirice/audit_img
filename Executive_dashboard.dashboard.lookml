@@ -577,8 +577,8 @@
     explore: data
     field: data.transaction_date_date
     listens_to_filters: []
-  - name: cost_center
-    title: cost_center
+  - name: Cost Center
+    title: Cost Center
     type: field_filter
     default_value: ''
     model: imgworldwide_audit

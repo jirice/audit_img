@@ -56,9 +56,9 @@
       - id: data.total_spend
         name: Data Total Spend
         __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml
-        __LINE_NUM: 42
+        __LINE_NUM: 56
       __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml
-      __LINE_NUM: 40
+      __LINE_NUM: 44
     x_axis_reversed: true
     hidden_fields:
     - data.unspsc_level_1
@@ -69,7 +69,7 @@
     col: 12
     width: 12
     height: 7
-  - name: Comparative analysis
+  - name: Comparative Analysis
     label: Comparative Analysis
     model: imgworldwide_audit
     explore: data
@@ -129,7 +129,7 @@
     col: 0
     width: 12
     height: 7
-  - name: Supplier count and invoice count by supplier spend
+  - name: Supplier Count and Invoice Count by Supplier Spend
     label: Supplier Count and Invoice Count by Supplier Spend
     model: imgworldwide_audit
     explore: data
@@ -180,38 +180,46 @@
     col: 12
     width: 12
     height: 7
-  - name: 80/20 suppliers
+  - name: 80/20 Suppliers
     label: 80/20 Suppliers
     model: imgworldwide_audit
     explore: data
     type: table
     fields:
-    - data.supplier_parent
+    - spend_by_supplier.supplier_parent
     - data.total_spend
     - data.total_spend_running_total
     - data.total_spend_unfiltered
     sorts:
     - data.total_spend desc
-    limit: 500
+    limit: 2000
     column_limit: 50
+    total: true
     dynamic_fields:
-    - table_calculation: cumulative_spend
-      label: "% Cumulative Spend"
+    - table_calculation: cumulative
+      label: cumulative %
       expression: "${data.total_spend_running_total}/${data.total_spend_unfiltered}"
       value_format:
       value_format_name: percent_2
-    query_timezone: America/New_York
-    show_view_names: false
+    - table_calculation: over_80
+      label: over 80%
+      expression: if(${cumulative}<0.8,1,if(${cumulative}>0.8,0,1))
+      value_format:
+      value_format_name:
+    - table_calculation: total
+      label: total
+      expression: if(${over_80}=0,1,if(${over_80}=1,1,1))
+      value_format:
+      value_format_name:
+    show_view_names: true
     show_row_numbers: true
     truncate_column_names: false
     hide_totals: false
     hide_row_totals: false
     table_theme: editable
     limit_displayed_rows: false
-    enable_conditional_formatting: true
-    conditional_formatting_ignored_fields:
-    - data.total_spend
-    - data.total_spend_running_total
+    enable_conditional_formatting: false
+    conditional_formatting_ignored_fields: []
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     stacking: ''
@@ -234,29 +242,24 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    series_types: {}
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    show_null_points: true
+    point_style: circle
+    interpolation: linear
     hidden_fields:
     - data.total_spend_unfiltered
-    conditional_formatting:
-    - type: between
-      value:
-      - '0'
-      - '0.801'
-      background_color: "#2fa02b"
-      font_color:
-      palette:
-        name: Red to Yellow to Green
-        colors:
-        - "#F36254"
-        - "#FCF758"
-        - "#4FBC89"
-        __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml
-        __LINE_NUM: 227
-      bold: false
-      italic: false
-      strikethrough: false
-      __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml
-      __LINE_NUM: 220
+    swap_axes: false
+    series_types: {}
+    series_labels:
+      data.total_spend_running_total: Cumulative spend
+      data.total_spend: Spend
+      spend_by_supplier.supplier_parent: Supplier
     listen: {}
     row: 7
     col: 0

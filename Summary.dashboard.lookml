@@ -296,7 +296,7 @@
     width: 6
     height: 2
   - name: UNSPSC Drill
-    label: Business Unit Segment Chart
+    label: UNSPSC Drill
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -482,7 +482,7 @@
     col: 0
     width: 9
     height: 5
-  - name: Top suppliers(spend top down)
+  - name: Top suppliers(Spend Top Down)
     label: Top suppliers(Spend Top Down)
     model: imgworldwide_audit
     explore: data
@@ -546,7 +546,7 @@
     col: 9
     width: 15
     height: 7
-  - name: Total spend Copy 2
+  - name: Total Spend
     label: Total Spend
     model: imgworldwide_audit
     explore: data
@@ -593,7 +593,7 @@
     col: 0
     width: 6
     height: 2
-  - name: Supplier parent count Copy
+  - name: Supplier Parent Count
     label: Supplier Parent Count
     model: imgworldwide_audit
     explore: data

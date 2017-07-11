@@ -548,8 +548,8 @@
     col: 0
     width: 12
     height: 7
-  - name: Region-Monthly_Spend
-    label: Region-Monthly_Spend
+  - name: Region_Monthly-Spend
+    label: Region_Monthly-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_column
