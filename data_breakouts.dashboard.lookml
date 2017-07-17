@@ -3,6 +3,7 @@
   elements:
   - name: Cost Center
     label: Cost Center
+    title: Cost Center
     model: imgworldwide_audit
     explore: data
     type: table
@@ -77,6 +78,7 @@
     height: 6
   - name: BA Description-Spend
     label: BA Description-Spend
+    title: BA Description-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -146,6 +148,7 @@
     height: 6
   - name: Region-Spend
     label: Region-Spend
+    title: Region-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_pie
@@ -218,6 +221,7 @@
     height: 6
   - name: Quarterly-Spend
     label: Quarterly-Spend
+    title: Quarterly-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_line
@@ -293,6 +297,7 @@
     height: 6
   - name: Yearly-Spend
     label: Yearly-Spend
+    title: Yearly-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_line
@@ -368,6 +373,7 @@
     height: 6
   - name: Monthly-Spend
     label: Monthly-Spend
+    title: Monthly-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_column
@@ -431,6 +437,7 @@
     height: 6
   - name: Profit Center-Spend
     label: Profit Center-Spend
+    title: Profit Center-Spend
     model: imgworldwide_audit
     explore: data
     type: table
@@ -481,6 +488,7 @@
     height: 6
   - name: Data Source-Spend
     label: Data Source-Spend
+    title: Data Source-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -550,6 +558,7 @@
     height: 7
   - name: Region_Monthly-Spend
     label: Region_Monthly-Spend
+    title: Region_Monthly-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_column
@@ -647,6 +656,7 @@
     height: 7
   - name: File Name-Spend
     label: File Name-Spend
+    title: File Name-Spend
     model: imgworldwide_audit
     explore: data
     type: looker_pie
