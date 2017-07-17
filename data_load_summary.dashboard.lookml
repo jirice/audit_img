@@ -3,6 +3,7 @@
   elements:
   - name: Time validation
     label: Time Validation
+    title: Time Validation
     model: imgworldwide_audit
     explore: data
     type: table
@@ -36,6 +37,7 @@
     height: 9
   - name: Top 10 normalized suppliers
     label: Top 10 Normalized Suppliers
+    title: Top 10 Normalized Suppliers
     model: imgworldwide_audit
     explore: data
     type: table
@@ -67,6 +69,7 @@
     height: 8
   - name: Top 10 classifications
     label: Top 10 Classifications
+    title: Top 10 Classifications
     model: imgworldwide_audit
     explore: data
     type: table
@@ -96,8 +99,9 @@
     col: 11
     width: 11
     height: 8
-  - name: Input file validation
+  - name: Input File Validation
     label: Input File Validation
+    title: Input File Validation
     model: imgworldwide_audit
     explore: data
     type: table
@@ -129,6 +133,7 @@
     height: 5
   - name: Classification depth
     label: Classification Depth
+    title: Classification Depth
     model: imgworldwide_audit
     explore: data
     type: table
