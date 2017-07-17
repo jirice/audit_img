@@ -144,6 +144,7 @@
     height: 6
   - name: Company
     label: Company
+    title: Company
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -203,6 +204,7 @@
     height: 14
   - name: Business Area
     label: Business Area
+    title: Business Area
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -262,6 +264,7 @@
     height: 7
   - name: Cost Centers
     label: Cost Centers
+    title: Cost Centers
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -299,6 +302,7 @@
     height: 2
   - name: UNSPSC Drill
     label: UNSPSC Drill
+    title: UNSPSC Drill
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -361,6 +365,7 @@
     height: 11
   - name: GL Drill
     label: GL Drill
+    title: GL Drill
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -420,6 +425,7 @@
     height: 6
   - name: Business Areas
     label: Business Areas
+    title: Business Areas
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -441,8 +447,9 @@
     col: 18
     width: 6
     height: 2
-  - name: Sourcing drill
+  - name: Sourcing Drill
     label: Sourcing Drill
+    title: Sourcing Drill
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -484,8 +491,9 @@
     col: 0
     width: 9
     height: 5
-  - name: Top suppliers(Spend Top Down)
-    label: Top suppliers(Spend Top Down)
+  - name: Top Suppliers(Spend Top Down)
+    label: Top Suppliers(Spend Top Down)
+    title: Top Suppliers(Spend Top Down)
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -550,6 +558,7 @@
     height: 7
   - name: Total Spend
     label: Total Spend
+    title: Total Spend
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -597,6 +606,7 @@
     height: 2
   - name: Supplier Parent Count
     label: Supplier Parent Count
+    title: Supplier Parent Count
     model: imgworldwide_audit
     explore: data
     type: single_value
