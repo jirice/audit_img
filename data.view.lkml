@@ -765,19 +765,19 @@ view: data {
 
     }
 
-#   measure: nonElectonicOrderType  {
-#     type:  sum
-#     sql: CASE WHEN ${TABLE}.transaction_type  !=''
-#       THEN 1 ELSE 0 END;;
-#     drill_fields: [source]
-#   }
-#
-#   measure: ElectronicOrderType {
-#     type:  sum
-#     sql: CASE WHEN ${TABLE}.transaction_type  =''
-#       THEN 1 ELSE 0 END;;
-#     drill_fields: [transaction_type]
-#   }
+  # measure: nonElectonicOrderType  {
+  #   type:  sum
+  #   sql: CASE WHEN ${TABLE}.transaction_type  !=''
+  #     THEN 1 ELSE 0 END;;
+  #   drill_fields: [source]
+  # }
+
+  # measure: ElectronicOrderType {
+  #   type:  sum
+  #   sql: CASE WHEN ${TABLE}.transaction_type  =''
+  #     THEN 1 ELSE 0 END;;
+  #   drill_fields: [transaction_type]
+  # }
 
   dimension: compliant {
     type: number

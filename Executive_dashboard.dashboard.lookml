@@ -4,6 +4,7 @@
   elements:
   - name: Supplier Parent Count
     label: Supplier Parent Count
+    title: Supplier Parent Count
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -49,6 +50,7 @@
     height: 2
   - name: Spend by Classification
     label: Spend by Classification
+    title: Spend by Classification
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -92,6 +94,7 @@
     height: 6
   - name: Dynamic Spend Metric
     label: Dynamic Spend Metric
+    title: Dynamic Spend Metric
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -138,6 +141,7 @@
     height: 2
   - name: Original Supplier Count Single Value
     label: Original Supplier Count Single Value
+    title: Original Supplier Count Single Value
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -183,6 +187,7 @@
     height: 2
   - name: "%Classified Single Value"
     label: "%Classified Single Value"
+    title: "%Classified Single Value"
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -238,6 +243,7 @@
     height: 2
   - name: Spend by Classification Pie Chart
     label: Spend by Classification Pie Chart
+    title: Spend by Classification Pie Chart
     model: imgworldwide_audit
     explore: data
     type: looker_pie
@@ -277,6 +283,7 @@
     width: 11
     height: 7
   - name: "%Excluded"
+    label: "%Excluded"
     title: "%Excluded"
     model: imgworldwide_audit
     explore: data
@@ -368,6 +375,7 @@
     height: 7
   - name: Supplier Spend Heat Chart - Executive Dashboard
     label: Supplier Spend Heat Chart - Executive Dashboard
+    title: Supplier Spend Heat Chart - Executive Dashboard
     model: imgworldwide_audit
     explore: data
     type: table
@@ -442,6 +450,7 @@
     height: 8
   - name: Total Spend Single Value
     label: Total Spend Single Value
+    title: Total Spend Single Value
     model: imgworldwide_audit
     explore: data
     type: single_value
@@ -487,6 +496,7 @@
     height: 2
   - name: Spend by Supplier - Top 10
     label: Spend by Supplier - Top 10
+    title: Spend by Supplier - Top 10
     model: imgworldwide_audit
     explore: data
     type: looker_bar
