@@ -363,13 +363,13 @@ view: data {
 
   dimension: unspsc_level_2 {
     type: string
-    drill_fields: [unspsc_level_2]
+    drill_fields: [unspsc_level_3]
     sql: ${TABLE}.unspsc_level_2 ;;
   }
 
   dimension: unspsc_level_3 {
     type: string
-    drill_fields: [unspsc_level_2]
+    drill_fields: [unspsc_level_4]
     sql: ${TABLE}.unspsc_level_3 ;;
   }
 

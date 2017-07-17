@@ -3,6 +3,7 @@
   elements:
   - name: Classification
     label: Classification
+    title: Classification
     model: imgworldwide_audit
     explore: data
     type: table
@@ -73,6 +74,7 @@
     height: 7
   - name: Supplier Grouping
     label: Supplier Grouping
+    title: Supplier Grouping
     model: imgworldwide_audit
     explore: data
     type: table
