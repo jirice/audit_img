@@ -3,6 +3,7 @@
   elements:
   - name: Spend/Supplier Matrix by Category
     label: Spend/Supplier Matrix by Category
+    title: Spend/Supplier Matrix by Category
     model: imgworldwide_audit
     explore: data
     type: looker_scatter
@@ -71,6 +72,7 @@
     height: 7
   - name: Comparative Analysis
     label: Comparative Analysis
+    title: Comparative Analysis
     model: imgworldwide_audit
     explore: data
     type: looker_column
@@ -131,6 +133,7 @@
     height: 7
   - name: Supplier Count and Invoice Count by Supplier Spend
     label: Supplier Count and Invoice Count by Supplier Spend
+    title: Supplier Count and Invoice Count by Supplier Spend
     model: imgworldwide_audit
     explore: data
     type: looker_line
@@ -182,6 +185,7 @@
     height: 7
   - name: 80/20 Suppliers
     label: 80/20 Suppliers
+    title: 80/20 Suppliers
     model: imgworldwide_audit
     explore: data
     type: table
