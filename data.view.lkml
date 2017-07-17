@@ -67,9 +67,6 @@ view: data {
   }
 
   measure:cost_center_count {
-
-#     sql: (select count(distinct b.cost_center)  FROM sr_img.report_staging_v2 b) ;;
-
     type: count_distinct
     sql: ${cost_center} ;;
   }
@@ -243,18 +240,29 @@ view: data {
     type: string
     sql: ${TABLE}.sourcing_group_level_1 ;;
     drill_fields: [sourcing_group_level_2]
+    link: {
+      label: "Link to Category Explore"
+      url: "/explore/imgworldwide_audit/data?qid=49g8lfIONvBW9INerjF7IS&f[data.sourcing_group_level_1] = {{ value }}"
+    }
+    link: {
+      label: "Cool Dashboard"
+      url: "google.com"
+
+  }
   }
 
   dimension: sourcing_group_level_2 {
     type: string
     sql: ${TABLE}.sourcing_group_level_2 ;;
     drill_fields: [sourcing_group_level_3]
+
   }
 
   dimension: sourcing_group_level_3 {
     type: string
     sql: ${TABLE}.sourcing_group_level_3 ;;
     drill_fields: [sourcing_group_level_4]
+
   }
 
   dimension: sourcing_group_level_4 {
@@ -746,7 +754,16 @@ view: data {
         }
 
 
+  dimension: Unspsc_Classification_Depth {
+    type: string
+    sql: CASE WHEN  LEN(data."unspsc_full_code") = 2  THEN 'Level 1'
+           WHEN LEN(data."unspsc_full_code") = 4  THEN 'Level 2'
+           WHEN LEN(data."unspsc_full_code") = 6  THEN 'Level 3'
+           WHEN LEN(data."unspsc_full_code") = 8  THEN 'Level 4'
+           WHEN data."unspsc_full_code" = ''  THEN 'Unclassified'
+      ELSE  data."unspsc_full_code"  END ;;
 
+    }
 
 #   measure: nonElectonicOrderType  {
 #     type:  sum
@@ -775,5 +792,6 @@ view: data {
     type: string
     sql: ${TABLE}.compliant ;;
   }
+
 
 }

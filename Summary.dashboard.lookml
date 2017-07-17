@@ -3,6 +3,7 @@
   elements:
   - name: Profit Center
     label: Profit Center
+    title: Profit Center
     model: imgworldwide_audit
     explore: data
     type: looker_bar
@@ -72,6 +73,7 @@
     height: 8
   - name: Region
     label: Region
+    title: Region
     model: imgworldwide_audit
     explore: data
     type: looker_pie

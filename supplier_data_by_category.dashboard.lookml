@@ -3,6 +3,7 @@
   elements:
   - name: Supplier by Category Level 1
     label: Supplier by Category Level 1
+    title: Supplier by Category Level 1
     model: imgworldwide_audit
     explore: data
     type: table
@@ -72,6 +73,7 @@
     height: 7
   - name: Supplier by Category Level 2
     label: Supplier by Category Level 2
+    title: Supplier by Category Level 2
     model: imgworldwide_audit
     explore: data
     type: table
@@ -154,6 +156,7 @@
     height: 7
   - name: Supplier by Category Level 3
     label: Supplier by Category Level 3
+    title: Supplier by Category Level 3
     model: imgworldwide_audit
     explore: data
     type: table
@@ -235,6 +238,7 @@
     height: 7
   - name: Supplier by Category Level 4
     label: Supplier by Category Level 4
+    title: Supplier by Category Level 4
     model: imgworldwide_audit
     explore: data
     type: table
