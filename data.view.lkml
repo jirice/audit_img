@@ -242,13 +242,10 @@ view: data {
     drill_fields: [sourcing_group_level_2]
     link: {
       label: "Link to Category Explore"
-      url: "/explore/imgworldwide_audit/data?qid=49g8lfIONvBW9INerjF7IS&f[data.sourcing_group_level_1] = {{ value }}"
+      url: "/explore/imgworldwide_audit/data?fields=data.sourcing_group_level_1,data.supplier_parent_count,data.total_spend,&f[data.sourcing_group_level_1]={{ value }}"
+#     "/explore/model/explore_name?fields=view.field_1,view.field_2,&f[view.filter_1]={{ value }}"
     }
-    link: {
-      label: "Cool Dashboard"
-      url: "google.com"
 
-  }
   }
 
   dimension: sourcing_group_level_2 {
@@ -303,7 +300,7 @@ view: data {
   dimension: supplier_parent {
     type: string
     sql: ${TABLE}.supplier_parent ;;
-    drill_fields: [category,sourcing_group_level_1,sourcing_group_level_2,sourcing_group_level_3]
+    drill_fields: [supplier_name]
   }
 
   dimension: supplier_region {

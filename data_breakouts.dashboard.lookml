@@ -3,7 +3,7 @@
   elements:
   - name: Cost Center
     label: Cost Center
-    title: Cost Center
+    title: Cost Center-Spend
     model: imgworldwide_audit
     explore: data
     type: table

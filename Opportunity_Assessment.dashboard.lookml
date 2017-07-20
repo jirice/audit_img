@@ -189,19 +189,15 @@
     model: imgworldwide_audit
     explore: data
     type: table
-    fields:
-    - spend_by_supplier.supplier_parent
-    - data.total_spend
-    - data.total_spend_running_total
-    - data.total_spend_unfiltered
-    sorts:
-    - data.total_spend desc
+    fields: [spend_by_supplier.supplier_parent, data.total_spend, data.total_spend_running_total,
+      data.total_spend_unfiltered]
+    sorts: [data.total_spend desc]
     limit: 2000
     column_limit: 50
     total: true
     dynamic_fields:
     - table_calculation: cumulative
-      label: cumulative %
+      label: Cumulative %
       expression: "${data.total_spend_running_total}/${data.total_spend_unfiltered}"
       value_format:
       value_format_name: percent_2
@@ -211,10 +207,11 @@
       value_format:
       value_format_name:
     - table_calculation: total
-      label: total
+      label: Total
       expression: if(${over_80}=0,1,if(${over_80}=1,1,1))
       value_format:
       value_format_name:
+    label: 80/20 Suppliers
     show_view_names: true
     show_row_numbers: true
     truncate_column_names: false
@@ -222,8 +219,9 @@
     hide_row_totals: false
     table_theme: editable
     limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
+    enable_conditional_formatting: true
+    conditional_formatting_ignored_fields: [data.total_spend, data.total_spend_running_total,
+      total, over_80]
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     stacking: ''
@@ -256,14 +254,17 @@
     show_null_points: true
     point_style: circle
     interpolation: linear
-    hidden_fields:
-    - data.total_spend_unfiltered
+    hidden_fields: [data.total_spend_unfiltered]
     swap_axes: false
     series_types: {}
     series_labels:
       data.total_spend_running_total: Cumulative spend
       data.total_spend: Spend
       spend_by_supplier.supplier_parent: Supplier
+    conditional_formatting: [{type: less than, value: '0.8', background_color: "#33ae55",
+        font_color: !!null '', palette: {name: Red to Yellow to Green, colors: ["#F36254",
+            "#FCF758", "#4FBC89"]}, bold: false, italic: false, strikethrough: false}]
+
     listen: {}
     row: 7
     col: 0
