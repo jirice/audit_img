@@ -270,6 +270,7 @@
     col: 0
     width: 12
     height: 7
+
   filters:
   - name: Cat Lvl 4
     title: Cat Lvl 4
