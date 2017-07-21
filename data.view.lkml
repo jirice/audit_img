@@ -356,6 +356,11 @@ view: data {
     type: string
     drill_fields: [unspsc_level_2]
     sql: ${TABLE}.unspsc_level_1 ;;
+    link: {
+      label: "Link to Category Explore"
+      url: "/explore/imgworldwide_audit/data?fields=data.unspsc_level_1,data.total_spend,data.supplier_parent_count,data.count,data.invoice_count,data.source,&f[data.unspsc_level_1]={{ value }}"
+#     "/explore/model/explore_name?fields=view.field_1,view.field_2,&f[view.filter_1]={{ value }}"
+    }
   }
 
   dimension: unspsc_level_2 {
