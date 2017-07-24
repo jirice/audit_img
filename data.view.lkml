@@ -559,8 +559,8 @@ dimension: Supplier
 
   measure: total_spend_unfiltered {
     label: "Total Spend - All Data"
-    type: number
-    sql: (SELECT SUM(b.spend_amount) FROM sr_img.report_staging_v2 b) ;;
+    type: sum
+    sql: ${spend_amount} ;;
     value_format_name: usd_0
   }
 
