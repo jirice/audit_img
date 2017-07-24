@@ -6,6 +6,20 @@ view: data {
     sql: ${TABLE}.account_document_number ;;
   }
 
+
+dimension: Supplier
+  {
+    view_label: "Supplier"
+    type: string
+
+    sql:  CASE
+            WHEN {% condition supplier_parent %} '' {% endcondition %}
+              THEN ${supplier_parent}
+            WHEN {% condition supplier_parent %} ${supplier_parent} {% endcondition %}
+              THEN ${supplier_name}
+          END;;
+}
+
   dimension: amount {
     type: string
     sql: ${TABLE}.amount ;;
@@ -144,11 +158,13 @@ view: data {
   dimension: gl_category_level_1 {
     type: string
     sql: ${TABLE}.gl_category_level_1 ;;
+    drill_fields: [gl_category_level_2]
   }
 
   dimension: gl_category_level_2 {
     type: string
     sql: ${TABLE}.gl_category_level_2 ;;
+    drill_fields: [gl_category_level_3]
   }
 
   dimension: gl_category_level_3 {
@@ -156,8 +172,16 @@ view: data {
     sql: ${TABLE}.gl_category_level_3 ;;
   }
 
-  dimension: invoice_date {
-    type: string
+  dimension_group: invoice_date {
+    view_label: "Dates"
+    type: time
+    datatype: date
+    timeframes: [date,
+      month,
+      month_num,
+      quarter,
+      quarter_of_year,
+      year]
     sql: ${TABLE}.invoice_date ;;
   }
 
@@ -236,15 +260,28 @@ view: data {
     sql: ${TABLE}.source ;;
   }
 
+  measure: spend_wme {
+    label: " Spend-WME"
+    type: sum
+    sql: CASE WHEN ${TABLE}.source='WME' then ${TABLE}.spend_amount else null end ;;
+  }
+
+  measure: spend_sap {
+    label: " Spend-SAP"
+    type: sum
+    sql: CASE WHEN ${TABLE}.source='SAP' then ${TABLE}.spend_amount else null end ;;
+  }
+
+
   dimension: sourcing_group_level_1 {
     type: string
     sql: ${TABLE}.sourcing_group_level_1 ;;
     drill_fields: [sourcing_group_level_2]
-    link: {
-      label: "Link to Category Explore"
-      url: "/explore/imgworldwide_audit/data?fields=data.sourcing_group_level_1,data.supplier_parent_count,data.total_spend,&f[data.sourcing_group_level_1]={{ value }}"
-#     "/explore/model/explore_name?fields=view.field_1,view.field_2,&f[view.filter_1]={{ value }}"
-    }
+#     link: {
+#       label: "Link to Category Explore"
+#       url: "/explore/imgworldwide_audit/data?fields=data.sourcing_group_level_1,data.supplier_parent_count,data.total_spend,&f[data.sourcing_group_level_1]={{ value }}"
+#      "/explore/model/explore_name?fields=view.field_1,view.field_2,&f[view.filter_1]={{ value }}"
+#     }
 
   }
 
@@ -295,6 +332,7 @@ view: data {
   dimension: supplier_name {
     type: string
     sql: ${TABLE}.supplier_name ;;
+    drill_fields: [supplier_parent]
   }
 
   dimension: supplier_parent {
@@ -318,19 +356,19 @@ view: data {
     sql: ${TABLE}.total_usd ;;
   }
 
-  dimension_group: transaction {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.transaction_date ;;
-  }
+  # dimension_group: transaction {
+  #   type: time
+  #   timeframes: [
+  #     raw,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   convert_tz: no
+  #   sql: ${TABLE}.transaction_date ;;
+  # }
 
   dimension: transaction_description_2 {
     type: string
@@ -356,11 +394,11 @@ view: data {
     type: string
     drill_fields: [unspsc_level_2]
     sql: ${TABLE}.unspsc_level_1 ;;
-    link: {
-      label: "Link to Category Explore"
-      url: "/explore/imgworldwide_audit/data?fields=data.unspsc_level_1,data.total_spend,data.supplier_parent_count,data.count,data.invoice_count,data.source,&f[data.unspsc_level_1]={{ value }}"
-#     "/explore/model/explore_name?fields=view.field_1,view.field_2,&f[view.filter_1]={{ value }}"
-    }
+#   link: {
+#       label: "Link to Category Explore"
+#       url: "/explore/imgworldwide_audit/data?fields=data.unspsc_level_1,data.total_spend,data.supplier_parent_count,data.count,data.invoice_count,data.source,&f[data.unspsc_level_1]={{ value }}"
+#      "/explore/model/explore_name?fields=view.field_1,view.field_2,&f[view.filter_1]={{ value }}"
+#     }
   }
 
   dimension: unspsc_level_2 {
@@ -405,17 +443,23 @@ view: data {
     drill_fields: [vendor_name, full_name, control_account_name, file_name, supplier_name]
   }
 
-  dimension: category_code {
-    view_label: "Taxonomies"
+  measure: Timeframe {
     type: string
-    sql: ${TABLE}."category_code" ;;
+    sql:  CONCAT((CONCAT(TO_CHAR(min(${transaction_date_date}), 'Mon-YY'),' to ')),TO_CHAR(max(${transaction_date_date}), 'Mon-YY')) ;;
+
   }
 
-  dimension: category_description {
-    view_label: "Taxonomies"
-    type: string
-    sql: ${TABLE}."category_description" ;;
-  }
+  # dimension: category_code {
+  #   view_label: "Taxonomies"
+  #   type: string
+  #   sql: ${TABLE}."category_code" ;;
+  # }
+
+  # dimension: category_description {
+  #   view_label: "Taxonomies"
+  #   type: string
+  #   sql: ${TABLE}."category_description" ;;
+  # }
 
   # Most projects go to Category 4.
   # Remove any unused category levels
@@ -486,12 +530,12 @@ view: data {
 
 
 
-  dimension: po_account_description {
-    view_label: "Account"
-    label: "PO Account Description"
-    type: string
-    sql: ${TABLE}."po_account_description" ;;
-  }
+  # dimension: po_account_description {
+  #   view_label: "Account"
+  #   label: "PO Account Description"
+  #   type: string
+  #   sql: ${TABLE}."po_account_description" ;;
+  # }
 
   # Remove fiscal parameters if project does not use a fiscal calendar
   dimension_group: transaction_date {
@@ -506,7 +550,7 @@ view: data {
       quarter_of_year, fiscal_quarter_of_year,
       year, fiscal_year]
     sql: ${TABLE}.transaction_date ;;
-    drill_fields: [transaction_date_month]
+    drill_fields: [transaction_date_month, transaction_date_quarter]
   }
 
   measure: total_spend_unfiltered {
@@ -597,10 +641,11 @@ view: data {
   }
 
   measure: invoice_spend {
+    hidden: yes
     view_label: "Invoice"
     type: sum
     sql: ${spend_amount} ;;
-    value_format_name: usd_0
+    # value_format_name: usd_0
   }
 
   measure: supplier_count {
@@ -608,7 +653,7 @@ view: data {
     hidden: yes
     type: count_distinct
     sql: ${supplier_parent} ;;
-    value_format_name: decimal_0
+    # value_format_name: decimal_0
   }
 
   measure: original_supplier_count {
@@ -746,11 +791,12 @@ view: data {
     view_label: "Classification"
     label: " Classification"
     type: string
+    drill_fields: [unspsc_level_1, unspsc_level_2, unspsc_level_3, unspsc_level_4]
     sql:case
-        when ${TABLE}."sourcing_group_level_4" is not null then ${TABLE}."sourcing_group_level_4"
-        when ${TABLE}."sourcing_group_level_4" is null and ${TABLE}."sourcing_group_level_3" is not null then ${TABLE}."sourcing_group_level_3"
-        when ${TABLE}."sourcing_group_level_4" is null and ${TABLE}."sourcing_group_level_3" is null and ${TABLE}."sourcing_group_level_2" is not null then ${TABLE}."sourcing_group_level_2"
-        when ${TABLE}."sourcing_group_level_4" is null and ${TABLE}."sourcing_group_level_3" is null and ${TABLE}."sourcing_group_level_2" is null and ${TABLE}."sourcing_group_level_1" is not null then ${TABLE}."sourcing_group_level_1"
+        when ${TABLE}."unspsc_level_4" is not null then ${TABLE}."unspsc_level_4"
+        when ${TABLE}."unspsc_level_4" is null and ${TABLE}."unspsc_level_3" is not null then ${TABLE}."unspsc_level_3"
+        when ${TABLE}."unspsc_level_4" is null and ${TABLE}."unspsc_level_3" is null and ${TABLE}."unspsc_level_2" is not null then ${TABLE}."unspsc_level_2"
+        when ${TABLE}."unspsc_level_4" is null and ${TABLE}."unspsc_level_3" is null and ${TABLE}."unspsc_level_2" is null and ${TABLE}."unspsc_level_1" is not null then ${TABLE}."unspsc_level_1"
         else null
         end;;
         }
@@ -781,19 +827,19 @@ view: data {
   #   drill_fields: [transaction_type]
   # }
 
-  dimension: compliant {
-    type: number
-    sql: CASE
-          WHEN ${compliant_raw} = 'Y' THEN 'Compliant'
-          ELSE 'Non-Compliant'
-         END ;;
-  }
+  # dimension: compliant {
+  #   type: number
+  #   sql: CASE
+  #         WHEN ${compliant_raw} = 'Y' THEN 'Compliant'
+  #         ELSE 'Non-Compliant'
+  #       END ;;
+  # }
 
-  dimension: compliant_raw {
-    hidden: yes
-    type: string
-    sql: ${TABLE}.compliant ;;
-  }
+  # dimension: compliant_raw {
+  #   hidden: yes
+  #   type: string
+  #   sql: ${TABLE}.compliant ;;
+  # }
 
 
 }

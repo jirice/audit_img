@@ -1,78 +1,9 @@
 - dashboard: Opportunity Assessment
   layout: newspaper
   elements:
-  - name: Spend/Supplier Matrix by Category
-    label: Spend/Supplier Matrix by Category
-    title: Spend/Supplier Matrix by Category
-    model: imgworldwide_audit
-    explore: data
-    type: looker_scatter
-    fields:
-    - data.unspsc_level_1
-    - data.total_spend
-    - data.supplier_parent_count
-    sorts:
-    - data.total_spend desc
-    limit: 50
-    column_limit: 50
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: linear
-    y_axis_scale_mode: linear
-    show_null_points: true
-    point_style: circle
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    swap_axes: true
-    y_axes:
-    - label: ''
-      maxValue:
-      minValue:
-      orientation: left
-      showLabels: true
-      showValues: true
-      tickDensity: custom
-      tickDensityCustom: 3
-      type: linear
-      unpinAxis: false
-      valueFormat: "$#,##0,, \\M"
-      series:
-      - id: data.total_spend
-        name: Data Total Spend
-        __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml
-        __LINE_NUM: 56
-      __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml
-      __LINE_NUM: 44
-    x_axis_reversed: true
-    hidden_fields:
-    - data.unspsc_level_1
-    y_axis_reversed: false
-    hide_legend: false
-    listen: {}
-    row: 7
-    col: 12
-    width: 12
-    height: 7
-  - name: Comparative Analysis
-    label: Comparative Analysis
-    title: Comparative Analysis
+  - name:  Comparative Analysis
+    label:  Comparative Analysis
+    title:  Comparative Analysis
     model: imgworldwide_audit
     explore: data
     type: looker_column
@@ -129,7 +60,7 @@
     listen: {}
     row: 0
     col: 0
-    width: 12
+    width: 24
     height: 7
   - name: Supplier Count and Invoice Count by Supplier Spend
     label: Supplier Count and Invoice Count by Supplier Spend
@@ -179,10 +110,10 @@
     - Supplier Parent Count
     - Invoice Count
     listen: {}
-    row: 0
-    col: 12
-    width: 12
-    height: 7
+    row: 7
+    col: 0
+    width: 24
+    height: 8
   - name: 80/20 Suppliers
     label: 80/20 Suppliers
     title: 80/20 Suppliers
@@ -197,20 +128,10 @@
     total: true
     dynamic_fields:
     - table_calculation: cumulative
-      label: Cumulative %
+      label: ' % Cumulative Spend'
       expression: "${data.total_spend_running_total}/${data.total_spend_unfiltered}"
       value_format:
       value_format_name: percent_2
-    - table_calculation: over_80
-      label: over 80%
-      expression: if(${cumulative}<0.8,1,if(${cumulative}>0.8,0,1))
-      value_format:
-      value_format_name:
-    - table_calculation: total
-      label: Total
-      expression: if(${over_80}=0,1,if(${over_80}=1,1,1))
-      value_format:
-      value_format_name:
     label: 80/20 Suppliers
     show_view_names: true
     show_row_numbers: true
@@ -220,8 +141,7 @@
     table_theme: editable
     limit_displayed_rows: false
     enable_conditional_formatting: true
-    conditional_formatting_ignored_fields: [data.total_spend, data.total_spend_running_total,
-      total, over_80]
+    conditional_formatting_ignored_fields: [data.total_spend, data.total_spend_running_total]
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     stacking: ''
@@ -258,18 +178,19 @@
     swap_axes: false
     series_types: {}
     series_labels:
-      data.total_spend_running_total: Cumulative spend
+      data.total_spend_running_total: Total Spend Running Total
       data.total_spend: Spend
       spend_by_supplier.supplier_parent: Supplier
     conditional_formatting: [{type: less than, value: '0.8', background_color: "#33ae55",
         font_color: !!null '', palette: {name: Red to Yellow to Green, colors: ["#F36254",
-            "#FCF758", "#4FBC89"]}, bold: false, italic: false, strikethrough: false}]
-
+            "#FCF758", "#4FBC89"], __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml,
+          __LINE_NUM: 265}, bold: false, italic: false, strikethrough: false, __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml,
+        __LINE_NUM: 264}]
     listen: {}
-    row: 7
+    row: 15
     col: 0
-    width: 12
-    height: 7
+    width: 24
+    height: 8
 
   filters:
   - name: Cat Lvl 4

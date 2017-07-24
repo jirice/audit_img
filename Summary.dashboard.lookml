@@ -1,19 +1,59 @@
 - dashboard: Summary
   layout: newspaper
   elements:
+  - name: Time Frame
+    title: Time Frame
+    model: imgworldwide_audit
+    explore: data
+    type: single_value
+    fields: [data.Timeframe]
+    limit: 500
+    column_limit: 50
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    series_types: {}
+    row: 0
+    col: 20
+    width: 4
+    height: 2
   - name: Profit Center
     label: Profit Center
     title: Profit Center
     model: imgworldwide_audit
     explore: data
     type: looker_bar
-    fields:
-    - data.profit_center_description
-    - data.total_spend
-    sorts:
-    - data.total_spend desc
+    fields: [data.profit_center_description, data.total_spend]
+    sorts: [data.total_spend desc]
     limit: 10
     column_limit: 50
+    label: Profit Center
     stacking: ''
     show_value_labels: true
     label_density: 25
@@ -44,28 +84,15 @@
     comparison_reverse_colors: false
     show_comparison_label: true
     series_types: {}
-    colors:
-    - 'palette: Mixed Dark'
+    colors: ['palette: Looker Classic']
     series_colors: {}
-    y_axes:
-    - label: ''
-      maxValue:
-      minValue:
-      orientation: bottom
-      showLabels: true
-      showValues: true
-      tickDensity: default
-      tickDensityCustom: 5
-      type: linear
-      unpinAxis: false
-      valueFormat: "$#,##0,, \\M"
-      series:
-      - id: data.total_spend
-        name: Data Total Spend
-        __FILE: imgworldwide_audit/Summary.dashboard.lookml
-        __LINE_NUM: 47
-      __FILE: imgworldwide_audit/Summary.dashboard.lookml
-      __LINE_NUM: 45
+    y_axes: [{label: '', maxValue: !!null '', minValue: !!null '', orientation: bottom,
+        showLabels: true, showValues: true, tickDensity: default, tickDensityCustom: 5,
+        type: linear, unpinAxis: false, valueFormat: "$#,##0,, \\M", series: [{id: data.total_spend,
+            name: Data Total Spend, __FILE: imgworldwide_audit/Summary.dashboard.lookml,
+            __LINE_NUM: 105}], __FILE: imgworldwide_audit/Summary.dashboard.lookml,
+        __LINE_NUM: 93}]
+
     listen: {}
     row: 26
     col: 0
@@ -297,8 +324,8 @@
     single_value_title: Cost Centers
     listen: {}
     row: 0
-    col: 12
-    width: 6
+    col: 10
+    width: 5
     height: 2
   - name: UNSPSC Drill
     label: UNSPSC Drill
@@ -444,8 +471,8 @@
     single_value_title: Business Areas
     listen: {}
     row: 0
-    col: 18
-    width: 6
+    col: 15
+    width: 5
     height: 2
   - name: Sourcing Drill
     label: Sourcing Drill
@@ -602,7 +629,7 @@
     listen: {}
     row: 0
     col: 0
-    width: 6
+    width: 5
     height: 2
   - name: Supplier Parent Count
     label: Supplier Parent Count
@@ -648,8 +675,8 @@
     single_value_title: Suppliers
     listen: {}
     row: 0
-    col: 6
-    width: 6
+    col: 5
+    width: 5
     height: 2
   filters:
   - name: Cat Lvl 2
@@ -764,5 +791,23 @@
     model: imgworldwide_audit
     explore: data
     field: data.select_spend_metric
+    listens_to_filters: []
+    allow_multiple_values:
+  - name: Sourcing Group Level 1
+    title: Sourcing Group Level 1
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.sourcing_group_level_1
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Source
+    title: Source
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.source
     listens_to_filters: []
     allow_multiple_values: true

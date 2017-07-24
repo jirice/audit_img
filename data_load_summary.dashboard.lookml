@@ -73,16 +73,12 @@
     model: imgworldwide_audit
     explore: data
     type: table
-    fields:
-    - data.sourcing_group_level_4
-    - data.total_spend
-    - data.original_supplier_count
-    - data.supplier_count
-    - data.count
-    sorts:
-    - data.total_spend desc
+    fields: [data.total_spend, data.original_supplier_count, data.supplier_count, data.count,
+      data.unspsc_level_4]
+    sorts: [data.total_spend desc]
     limit: 10
     column_limit: 50
+    label: Top 10 Classifications
     show_view_names: true
     show_row_numbers: true
     truncate_column_names: false
@@ -169,3 +165,154 @@
     col: 11
     width: 11
     height: 4
+  filters:
+  - name: Cat Lvl 2
+    title: Cat Lvl 2
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.sourcing_group_level_2
+    listens_to_filters:
+    - Cat Lvl 1
+    allow_multiple_values: true
+  - name: Cat Lvl 1
+    title: Cat Lvl 1
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.sourcing_group_level_1
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Cat Lvl 3
+    title: Cat Lvl 3
+    type: field_filter
+    default_value:
+    model: imgworldwide_audit
+    explore: data
+    field: data.sourcing_group_level_3
+    listens_to_filters:
+    - Cat Lvl 2
+    - Cat Lvl 1
+    allow_multiple_values: true
+  # - name: Cat Lvl 5
+  #   title: Cat Lvl 5
+  #   type: field_filter
+  #   default_value:
+  #   model: imgworldwide_audit
+  #   explore: data
+  #   field: data.sourcing_group_level_5
+  #   listens_to_filters:
+  #   - Cat Lvl 2
+  #   - Cat Lvl 1
+  #   - Cat Lvl 3
+  #   - Cat Lvl 4
+  #   allow_multiple_values: true
+  - name: Cat Lvl 4
+    title: Cat Lvl 4
+    type: field_filter
+    default_value:
+    model: imgworldwide_audit
+    explore: data
+    field: data.sourcing_group_level_4
+    listens_to_filters:
+    - Cat Lvl 2
+    - Cat Lvl 1
+    - Cat Lvl 3
+    allow_multiple_values: true
+  # - name: Cat Lvl 6
+  #   title: Cat Lvl 6
+  #   type: field_filter
+  #   default_value:
+  #   model: imgworldwide_audit
+  #   explore: data
+  #   field: data.sourcing_group_level_6
+  #   listens_to_filters:
+  #   - Cat Lvl 2
+  #   - Cat Lvl 1
+  #   - Cat Lvl 3
+  #   - Cat Lvl 5
+  #   - Cat Lvl 4
+  #   allow_multiple_values: true
+  - name: Data Source
+    title: Data Source
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.source
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Transaction Date
+    title: Transaction Date
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.transaction_date_date
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Transaction Calendar Year
+    title: Transaction Calendar Year
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.transaction_date_year
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Transaction Calendar Quarter
+    title: Transaction Calendar Quarter
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.transaction_date_quarter_of_year
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Transaction Calendar Month
+    title: Transaction Calendar Month
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.transaction_date_month_num
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Transaction Fiscal Quarter
+    title: Transaction Fiscal Quarter
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.transaction_date_fiscal_quarter_of_year
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Transaction Fiscal Year
+    title: Transaction Fiscal Year
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.transaction_date_fiscal_year
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Transaction Fiscal Month
+    title: Transaction Fiscal Month
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.transaction_date_fiscal_month_num
+    listens_to_filters: []
+    allow_multiple_values: true
+  - name: Spend Type
+    title: Spend Type
+    type: field_filter
+    default_value: ''
+    model: imgworldwide_audit
+    explore: data
+    field: data.select_spend_metric
+    listens_to_filters: []
+    allow_multiple_values: true
