@@ -341,7 +341,7 @@ dimension: Supplier
     drill_fields: [supplier_name]
     link: {
       label: "Link to Supplier Name Explore"
-      url: "/looks/2606?&f[data.supplier_parent_name]={{ value }}"
+      url: "/looks/2606?&f[data.supplier_parent]={{ value }}"
     }
   }
 
