@@ -654,7 +654,7 @@ dimension: Supplier
 
   measure: supplier_count {
     view_label: "Supplier"
-    hidden: yes
+    hidden: no
     type: count_distinct
     sql: ${supplier_parent} ;;
     # value_format_name: decimal_0
@@ -662,7 +662,7 @@ dimension: Supplier
 
   measure: original_supplier_count {
     view_label: "Supplier"
-    hidden: yes
+    hidden: no
     type: count_distinct
     sql: ${TABLE}."supplier_name" ;;
   }
