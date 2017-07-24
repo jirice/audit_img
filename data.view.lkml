@@ -332,13 +332,17 @@ dimension: Supplier
   dimension: supplier_name {
     type: string
     sql: ${TABLE}.supplier_name ;;
-    drill_fields: [supplier_parent]
+
   }
 
   dimension: supplier_parent {
     type: string
     sql: ${TABLE}.supplier_parent ;;
     drill_fields: [supplier_name]
+    link: {
+      label: "Link to Supplier Name Explore"
+      url: "/looks/2606?&f[data.supplier_parent_name]={{ value }}"
+    }
   }
 
   dimension: supplier_region {
@@ -619,7 +623,7 @@ dimension: Supplier
 
     view_label: "Invoice"
     type: count_distinct
-    sql: ${invoice_number} ;;
+    sql: case when ${invoice_number} = '' then null else ${invoice_number} end ;;
     value_format_name: decimal_0
   }
 
