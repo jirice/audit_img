@@ -129,7 +129,7 @@
     dynamic_fields:
     - table_calculation: cumulative
       label: ' % Cumulative Spend'
-      expression: "${data.total_spend_running_total}/${data.total_spend_unfiltered}"
+      expression: "${data.total_spend_running_total}/${data.total_spend:total}"
       value_format:
       value_format_name: percent_2
     label: 80/20 Suppliers
