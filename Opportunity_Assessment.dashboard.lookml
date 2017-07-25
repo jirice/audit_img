@@ -120,8 +120,7 @@
     model: imgworldwide_audit
     explore: data
     type: table
-    fields: [spend_by_supplier.supplier_parent, data.total_spend, data.total_spend_running_total,
-      data.total_spend_unfiltered]
+    fields: [spend_by_supplier.supplier_parent, data.total_spend, data.total_spend_running_total]
     sorts: [data.total_spend desc]
     limit: 2000
     column_limit: 50
