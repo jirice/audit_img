@@ -3,7 +3,7 @@
   elements:
   - name: Time Frame
     title: Time Frame
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: single_value
     fields: [data.Timeframe]
@@ -46,7 +46,7 @@
   - name: Profit Center
     label: Profit Center
     title: Profit Center
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_bar
     fields: [data.profit_center_description, data.total_spend]
@@ -89,8 +89,8 @@
     y_axes: [{label: '', maxValue: !!null '', minValue: !!null '', orientation: bottom,
         showLabels: true, showValues: true, tickDensity: default, tickDensityCustom: 5,
         type: linear, unpinAxis: false, valueFormat: "$#,##0,, \\M", series: [{id: data.total_spend,
-            name: Data Total Spend, __FILE: imgworldwide_audit/Summary.dashboard.lookml,
-            __LINE_NUM: 105}], __FILE: imgworldwide_audit/Summary.dashboard.lookml,
+            name: Data Total Spend, __FILE: WMEIMG/Summary.dashboard.lookml,
+            __LINE_NUM: 105}], __FILE: WMEIMG/Summary.dashboard.lookml,
         __LINE_NUM: 93}]
 
     listen: {}
@@ -101,7 +101,7 @@
   - name: Region
     label: Region
     title: Region
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_pie
     fields:
@@ -160,9 +160,9 @@
       series:
       - id: data.total_spend
         name: Data Total Spend
-        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __FILE: WMEIMG/Summary.dashboard.lookml
         __LINE_NUM: 94
-      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __FILE: WMEIMG/Summary.dashboard.lookml
       __LINE_NUM: 92
     listen: {}
     row: 20
@@ -172,7 +172,7 @@
   - name: Company
     label: Company
     title: Company
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_bar
     fields:
@@ -220,9 +220,9 @@
       series:
       - id: data.total_spend
         name: Data Total Spend
-        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __FILE: WMEIMG/Summary.dashboard.lookml
         __LINE_NUM: 130
-      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __FILE: WMEIMG/Summary.dashboard.lookml
       __LINE_NUM: 128
     listen: {}
     row: 20
@@ -232,7 +232,7 @@
   - name: Business Area
     label: Business Area
     title: Business Area
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_bar
     fields:
@@ -279,9 +279,9 @@
       series:
       - id: data.total_spend
         name: Data Total Spend
-        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __FILE: WMEIMG/Summary.dashboard.lookml
         __LINE_NUM: 165
-      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __FILE: WMEIMG/Summary.dashboard.lookml
       __LINE_NUM: 163
     font_size: 10px, 1em, 50%, etc.
     listen: {}
@@ -292,7 +292,7 @@
   - name: Cost Centers
     label: Cost Centers
     title: Cost Centers
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: single_value
     fields:
@@ -330,7 +330,7 @@
   - name: UNSPSC Drill
     label: UNSPSC Drill
     title: UNSPSC Drill
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_bar
     fields:
@@ -381,9 +381,9 @@
       series:
       - id: data.total_spend
         name: Data Total Spend
-        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __FILE: WMEIMG/Summary.dashboard.lookml
         __LINE_NUM: 241
-      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __FILE: WMEIMG/Summary.dashboard.lookml
       __LINE_NUM: 239
     listen: {}
     row: 2
@@ -393,7 +393,7 @@
   - name: GL Drill
     label: GL Drill
     title: GL Drill
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_bar
     fields:
@@ -441,9 +441,9 @@
       series:
       - id: data.total_spend
         name: Data Total Spend
-        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __FILE: WMEIMG/Summary.dashboard.lookml
         __LINE_NUM: 277
-      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __FILE: WMEIMG/Summary.dashboard.lookml
       __LINE_NUM: 275
     listen: {}
     row: 7
@@ -453,7 +453,7 @@
   - name: Business Areas
     label: Business Areas
     title: Business Areas
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: single_value
     fields:
@@ -477,7 +477,7 @@
   - name: Sourcing Drill
     label: Sourcing Drill
     title: Sourcing Drill
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_bar
     fields:
@@ -521,7 +521,7 @@
   - name: Top Suppliers(Spend Top Down)
     label: Top Suppliers(Spend Top Down)
     title: Top Suppliers(Spend Top Down)
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_bar
     fields:
@@ -574,9 +574,9 @@
       series:
       - id: data.selected_spend_metric
         name: Selected Spend Metric
-        __FILE: imgworldwide_audit/Summary.dashboard.lookml
+        __FILE: WMEIMG/Summary.dashboard.lookml
         __LINE_NUM: 395
-      __FILE: imgworldwide_audit/Summary.dashboard.lookml
+      __FILE: WMEIMG/Summary.dashboard.lookml
       __LINE_NUM: 383
     listen: {}
     row: 13
@@ -586,7 +586,7 @@
   - name: Total Spend
     label: Total Spend
     title: Total Spend
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: single_value
     fields:
@@ -634,7 +634,7 @@
   - name: Supplier Parent Count
     label: Supplier Parent Count
     title: Supplier Parent Count
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: single_value
     fields:
@@ -683,7 +683,7 @@
     title: Cat Lvl 2
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_2
     listens_to_filters:
@@ -693,7 +693,7 @@
     title: Cat Lvl 1
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_1
     listens_to_filters: []
@@ -702,7 +702,7 @@
     title: Cat Lvl 3
     type: field_filter
     default_value:
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_3
     listens_to_filters:
@@ -713,7 +713,7 @@
     title: Cat Lvl 4
     type: field_filter
     default_value:
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_4
     listens_to_filters:
@@ -725,7 +725,7 @@
     title: Transaction Date
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_date
     listens_to_filters: []
@@ -734,7 +734,7 @@
     title: Transaction Calendar Year
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_year
     listens_to_filters: []
@@ -743,7 +743,7 @@
     title: Transaction Calendar Quarter
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_quarter_of_year
     listens_to_filters: []
@@ -752,7 +752,7 @@
     title: Transaction Calendar Month
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_month_num
     listens_to_filters: []
@@ -761,7 +761,7 @@
     title: Transaction Fiscal Quarter
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_fiscal_quarter_of_year
     listens_to_filters: []
@@ -770,7 +770,7 @@
     title: Transaction Fiscal Year
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_fiscal_year
     listens_to_filters: []
@@ -779,7 +779,7 @@
     title: Transaction Fiscal Month
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_fiscal_month_num
     listens_to_filters: []
@@ -788,7 +788,7 @@
     title: Spend Type
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.select_spend_metric
     listens_to_filters: []
@@ -797,7 +797,7 @@
     title: Sourcing Group Level 1
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_1
     listens_to_filters: []
@@ -806,7 +806,7 @@
     title: Source
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.source
     listens_to_filters: []

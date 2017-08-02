@@ -4,7 +4,7 @@
   - name:  Comparative Analysis
     label:  Comparative Analysis
     title:  Comparative Analysis
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_column
     fields:
@@ -65,7 +65,7 @@
   - name: Supplier Count and Invoice Count by Supplier Spend
     label: Supplier Count and Invoice Count by Supplier Spend
     title: Supplier Count and Invoice Count by Supplier Spend
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: looker_line
     fields:
@@ -117,7 +117,7 @@
   - name: 80/20 Suppliers
     label: 80/20 Suppliers
     title: 80/20 Suppliers
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields: [spend_by_supplier.supplier_parent, data.total_spend, data.total_spend_running_total]
@@ -182,8 +182,8 @@
       spend_by_supplier.supplier_parent: Supplier
     conditional_formatting: [{type: less than, value: '0.8', background_color: "#33ae55",
         font_color: !!null '', palette: {name: Red to Yellow to Green, colors: ["#F36254",
-            "#FCF758", "#4FBC89"], __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml,
-          __LINE_NUM: 265}, bold: false, italic: false, strikethrough: false, __FILE: imgworldwide_audit/Opportunity_Assessment.dashboard.lookml,
+            "#FCF758", "#4FBC89"], __FILE: WMEIMG/Opportunity_Assessment.dashboard.lookml,
+          __LINE_NUM: 265}, bold: false, italic: false, strikethrough: false, __FILE: WMEIMG/Opportunity_Assessment.dashboard.lookml,
         __LINE_NUM: 264}]
     listen: {}
     row: 15
@@ -196,7 +196,7 @@
     title: Cat Lvl 4
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_4
     listens_to_filters:
@@ -208,7 +208,7 @@
     title: Cat Lvl 3
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_3
     listens_to_filters:
@@ -219,7 +219,7 @@
     title: Cat Lvl 2
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_2
     listens_to_filters:
@@ -229,7 +229,7 @@
     title: Cat Lvl 1
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_1
     listens_to_filters: []

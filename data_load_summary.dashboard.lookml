@@ -4,7 +4,7 @@
   - name: Time validation
     label: Time Validation
     title: Time Validation
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -38,7 +38,7 @@
   - name: Top 10 normalized suppliers
     label: Top 10 Normalized Suppliers
     title: Top 10 Normalized Suppliers
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -70,7 +70,7 @@
   - name: Top 10 classifications
     label: Top 10 Classifications
     title: Top 10 Classifications
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields: [data.total_spend, data.original_supplier_count, data.supplier_count, data.count,
@@ -98,7 +98,7 @@
   - name: Input File Validation
     label: Input File Validation
     title: Input File Validation
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -130,7 +130,7 @@
   - name: Classification depth
     label: Classification Depth
     title: Classification Depth
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -170,7 +170,7 @@
     title: Cat Lvl 2
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_2
     listens_to_filters:
@@ -180,7 +180,7 @@
     title: Cat Lvl 1
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_1
     listens_to_filters: []
@@ -189,7 +189,7 @@
     title: Cat Lvl 3
     type: field_filter
     default_value:
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_3
     listens_to_filters:
@@ -200,7 +200,7 @@
   #   title: Cat Lvl 5
   #   type: field_filter
   #   default_value:
-  #   model: imgworldwide_audit
+  #   model: WMEIMG
   #   explore: data
   #   field: data.sourcing_group_level_5
   #   listens_to_filters:
@@ -213,7 +213,7 @@
     title: Cat Lvl 4
     type: field_filter
     default_value:
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_4
     listens_to_filters:
@@ -225,7 +225,7 @@
   #   title: Cat Lvl 6
   #   type: field_filter
   #   default_value:
-  #   model: imgworldwide_audit
+  #   model: WMEIMG
   #   explore: data
   #   field: data.sourcing_group_level_6
   #   listens_to_filters:
@@ -239,7 +239,7 @@
     title: Data Source
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.source
     listens_to_filters: []
@@ -248,7 +248,7 @@
     title: Transaction Date
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_date
     listens_to_filters: []
@@ -257,7 +257,7 @@
     title: Transaction Calendar Year
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_year
     listens_to_filters: []
@@ -266,7 +266,7 @@
     title: Transaction Calendar Quarter
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_quarter_of_year
     listens_to_filters: []
@@ -275,7 +275,7 @@
     title: Transaction Calendar Month
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_month_num
     listens_to_filters: []
@@ -284,7 +284,7 @@
     title: Transaction Fiscal Quarter
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_fiscal_quarter_of_year
     listens_to_filters: []
@@ -293,7 +293,7 @@
     title: Transaction Fiscal Year
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_fiscal_year
     listens_to_filters: []
@@ -302,7 +302,7 @@
     title: Transaction Fiscal Month
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.transaction_date_fiscal_month_num
     listens_to_filters: []
@@ -311,7 +311,7 @@
     title: Spend Type
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.select_spend_metric
     listens_to_filters: []

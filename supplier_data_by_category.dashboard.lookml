@@ -4,7 +4,7 @@
   - name: Supplier by Category Level 1
     label: Supplier by Category Level 1
     title: Supplier by Category Level 1
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -74,7 +74,7 @@
   - name: Supplier by Category Level 2
     label: Supplier by Category Level 2
     title: Supplier by Category Level 2
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -157,7 +157,7 @@
   - name: Supplier by Category Level 3
     label: Supplier by Category Level 3
     title: Supplier by Category Level 3
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -239,7 +239,7 @@
   - name: Supplier by Category Level 4
     label: Supplier by Category Level 4
     title: Supplier by Category Level 4
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     type: table
     fields:
@@ -323,7 +323,7 @@
     title: Cat Lvl 1
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_1
     listens_to_filters: []
@@ -331,7 +331,7 @@
     title: Cat Lvl 3
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_3
     listens_to_filters:
@@ -341,7 +341,7 @@
     title: Cat Lvl 2
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_2
     listens_to_filters:
@@ -350,7 +350,7 @@
     title: Cat Lvl 4
     type: field_filter
     default_value: ''
-    model: imgworldwide_audit
+    model: WMEIMG
     explore: data
     field: data.sourcing_group_level_4
     listens_to_filters:
